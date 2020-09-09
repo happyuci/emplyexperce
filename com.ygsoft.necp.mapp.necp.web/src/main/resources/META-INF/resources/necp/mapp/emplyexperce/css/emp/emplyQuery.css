@@ -1,0 +1,175 @@
+
+/****controlCss****/
+/*ctrlInfo_a123b654-7fcb-4207-9a7d-1a6809fcdd94_更多查询_ctrlInfo*/
+a.query_inner + .btn_query {
+    margin-left: 20px;
+}
+.query_inner_zone {
+    margin-top: -3px;
+}
+/****controlCss****/
+
+/****controlCss****/
+/*ctrlInfo_114c9364-15f6-4439-8bf5-b884fe695812_页面工具栏_ctrlInfo*/
+.navbar-fixed-bottom {
+    position: fixed!important;
+}
+.selectNum {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    min-height: auto;
+}
+.selectNum .text-warning {
+    margin: 0 5px;
+}
+/****controlCss****/
+        .emplymgmt-0 {
+            width: auto;
+		
+        }
+        
+
+        .emplymgmt-1 {
+            width: 100%;
+		 height: 100%;
+		 overflow: visible;
+		 position: relative;
+		 min-height: 90px;
+		 min-width: 120px;
+		
+        }
+        
+
+        .emplymgmt-2 {
+            width: 100%;
+		 height: auto;
+		 overflow: visible;
+		 display: inline-block;
+		 position: relative;
+		
+        }
+        
+
+        .emplymgmt-3 {
+            text-align: right;
+		
+        }
+        
+
+        .emplymgmt-4 {
+            border-radius: 0px;
+		 border: 0px rgb(0, 0, 0);
+		 color: rgb(51, 51, 51);
+		 line-height: 34px;
+		 font-family: 微软雅黑;
+		 font-size: 14px;
+		 white-space: nowrap;
+		 text-overflow: ellipsis;
+		
+        }
+        
+
+        .emplymgmt-5 {
+            width: 100%;
+		 text-align: left;
+		 color: rgb(51, 51, 51);
+		 font-size: 14px;
+		
+        }
+        
+
+        .emplymgmt-6 {
+            width: 100%;
+		 text-align: right;
+		 color: rgb(51, 51, 51);
+		 font-size: 14px;
+		
+        }
+        
+
+        .emplymgmt-7 {
+            width:100%;
+		
+        }
+        
+
+        .emplymgmt-8 {
+            width: 100%;
+		 height: 34px;
+		
+        }
+        
+
+        .emplymgmt-9 {
+            text-align: center;
+		 overflow: visible;
+		 position: relative;
+		
+        }
+        
+
+        .emplymgmt-10 {
+            overflow: visible;
+		 position: relative;
+		 min-height: 200px;
+		
+        }
+        
+
+        .emplymgmt-11 {
+            width: 100%;
+		
+        }
+        
+
+        .emplymgmt-12 {
+            width: 100%;
+		 overflow: visible;
+		 position: relative;
+		
+        }
+        
+
+        .emplymgmt-13 {
+            width: 100%;
+		 height: 180px;
+		 position: relative;
+		
+        }
+        
+
+        .emplymgmt-14 {
+            min-height: 0px;
+		
+        }
+        
+
+        .emplymgmt-15 {
+            text-align: right;
+		 overflow: visible;
+		 padding-right: 10px;
+		 position: relative;
+		
+        }
+        
+
+        .emplymgmt-16 {
+            color: rgb(255, 111, 15);
+		
+        }
+        
+
+        .emplymgmt-17 {
+            text-align: left;
+		 overflow: visible;
+		 position: relative;
+		
+        }
+        
+
+        .emplymgmt-18 {
+            display: none;
+		
+        }
+        

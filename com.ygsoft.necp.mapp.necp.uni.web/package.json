@@ -1,0 +1,15 @@
+{
+	"uni-app": {
+		"scripts": {
+			"tswan": "npm install necp.tswan.mobile.components -dev-save",
+			"tflow": "npm install necp.tflow.mobile.components -dev-save",
+			"date-fns": "npm install date-fns -dev-save"
+		}
+	},
+	"dependencies": {
+		"date-fns": "^2.14.0",
+		"necp.tflow.mobile.components": "^0.0.2",
+		"necp.tswan.mobile.components": "^6.7.0",
+		"uni-request": "^1.0.2"
+	}
+}

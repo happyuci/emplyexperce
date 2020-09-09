@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="no-js emplymgmt-0" lang="zh-cn" pageid="emplymgmt"><!--<![endif]--><!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8"/>
+	<title>职工管理</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="description" content=""/>
+	<meta name="author" content=""/>
+	<!-- 平台ECP3.0通用样式 -->
+	<link rel="stylesheet" href="../../../../../assets/std/themes/default/style.css"/>
+	<link rel="stylesheet" href="../../../../../assets/std/themes/default/style-template.css"/>
+	<link rel="stylesheet" href="../../../../../assets/necp/themes/default/style-ecp-plugins.css"/>
+	<link rel="stylesheet" href="../../../../../assets/necp/themes/default/style-ecp.css"/>
+	<link rel="stylesheet" href="../../../../../assets/std/themes/default/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../../../../assets/std/themes/default/icomoon/icomoon.css"/>
+	<link rel="stylesheet" href="../../css/xdeer.css"/>
+	<link rel="stylesheet" href="../../css/emp/emplyQuery.css"/>
+</head>
+<body version="3.0" xv="3.1.0">
+<div class="page-container emplymgmt-1" candrop="ecp-rect">
+	<div class="col-12" id="ecpcol_3713" candrop="ecp-col">
+		<div class="pageTop" id="ecprect_0959" candrop="ecp-col">
+			<div class="pageTopTitle">员工查询</div>
+			<div class="pageTopQuery" id="ecprect_9580" candrop="ecp-rect">
+				<div class="col-8" id="ecpcol_7624" candrop="ecp-col">
+					<div class="padding-tb-3 emplymgmt-2" id="ecprect_7846" candrop="ecp-rect" false="查询条件">
+						<!--<div class="col-2 emplymgmt-3" id="ecpcol_2635" candrop="ecp-col" isrender="true">
+                            <div class="ellipsis emplymgmt-4" id="emplyid_label" com="ecp-label" isrender="true"> 员工id：
+                            </div>
+                        </div>
+                        <div class="col-2" id="ecpcol_8230" candrop="ecp-col" isrender="true"><input
+                                class="form-control input_underline emplymgmt-5" id="emplyid" type="text"
+                                autocomplete="off" com="ecp-text" isrender="true" ng-model="emplyid"/>
+                        </div>-->
+						<div class="col-2 emplymgmt-3" id="ecpcol_4073" candrop="ecp-col" isrender="true">
+							<div class="ellipsis emplymgmt-4" id="emplyname_label" com="ecp-label" isrender="true">
+								姓名：
+							</div>
+						</div>
+						<div class="col-2" id="ecpcol_7167" candrop="ecp-col" isrender="true"><input
+								class="form-control input_underline emplymgmt-5" id="emplyname" type="text"
+								autocomplete="off" com="ecp-text" isrender="true" ng-model="emplyname"/>
+						</div>
+						<div class="col-2 emplymgmt-3" id="ecpcol_5117" candrop="ecp-col" isrender="true">
+							<div class="ellipsis emplymgmt-4" id="age_label" com="ecp-label" isrender="true"> 年龄：
+							</div>
+						</div>
+						<div class="col-2" id="ecpcol_9468" candrop="ecp-col" isrender="true"><input
+								class="ecp-component-numberBox form-control input_underline emplymgmt-6" id="age"
+								type="text"
+								data-option="{&quot;mask&quot;:&quot;*#&quot;,&quot;textAlign&quot;:&quot;right&quot;,&quot;font-size&quot;:&quot;14px&quot;,&quot;color&quot;:&quot;rgb(51, 51, 51)&quot;,&quot;backgroundColor&quot;:&quot;&amp;nbsp;&quot;,&quot;font-weight&quot;:&quot;false&quot;,&quot;disabled&quot;:&quot;false&quot;,&quot;readOnly&quot;:&quot;false&quot;,&quot;required&quot;:false,&quot;thousandsSeparator&quot;:true,&quot;borderClass&quot;:&quot;form-control input_underline&quot;,&quot;ng-model&quot;:&quot;age&quot;,&quot;scale&quot;:0,&quot;typeId&quot;:&quot;&quot;,&quot;classId&quot;:&quot;&quot;}"
+								com="ecp-component-numberBox" isrender="true" ng-model="age" datatype="number"/>
+						</div>
+						<div class="col-2 emplymgmt-3" id="ecpcol_0355" candrop="ecp-col" isrender="true">
+							<div class="ellipsis emplymgmt-4" id="sex_label" com="ecp-label" isrender="true"> 性别：
+							</div>
+						</div>
+						<div class="col-2" id="ecpcol_9771" candrop="ecp-col" isrender="true">
+							<select class="entitySelectPlace select-default form-control"
+									id="sex" data-live-search='true'>
+								<option data-tokens='' value=""></option>
+								<option data-tokens='0' value="0">男</option>
+								<option data-tokens='1' value="1">女</option>
+							</select>
+						</div>
+						<div style="margin-top: 10px">
+							<div class="col-2 emplymgmt-3" id="ecpcol_6672" candrop="ecp-col" isrender="true">
+								<div class="ellipsis emplymgmt-4" id="birth_label" com="ecp-label" isrender="true"> 生日：
+								</div>
+							</div>
+							<div class="col-2" id="ecpcol_2975" candrop="ecp-col" isrender="true">
+								<input class="datepicker ecp-qzzdatepicker form-control emplymgmt-8" id="birth" type="text"
+									   onfocus="this.blur()" isrender="true" ng-model="birth" data-date-format='yyyy-MM-dd'
+									   ng-datatype="date"/>
+							</div>
+						</div>
+						<div class="col-2" id="ecpcol_8469" candrop="ecp-col" isrender="true"></div>
+						<div class="col-2" id="ecpcol_5161" candrop="ecp-col" isrender="true"></div>
+					</div>
+				</div>
+				<div class="col-3" id="ecpcol_3700" candrop="ecp-col">
+					<div id="ecprect_3706" candrop="ecp-rect" class="emplymgmt-2">
+						<div class="col-12 emplymgmt-9" id="ecpcol_1585" candrop="ecp-col">
+							<button class="btn_query btn-default btn" id="queryBtn" com="ecp-button">查询</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-12" id="ecpcol_6122" candrop="ecp-col">
+		<div style="top:50px;" class="mainContainer emplymgmt-10" id="63cf4d53cf4fb5a1427ba2d0d0a7744e" candrop="ecp-rect">
+			<div style="top:-50px;" class="tableTopContainer clearfix col-12" id="ecpcol_2243" candrop="ecp-col">
+				<div class="tableTopBtnGroup" id="ecptabletool_9210" com="ecp-table-tool">
+					<button class="btn" id="addBtn" com="ecp-button" isrender="true"><i
+							class="moon-chuantou"></i><span>新增</span></button>
+					<button class="btn" id="BUTTON_2956" com="ecp-button" isrender="true"><i
+							class="fa fa-cog"></i><span>修改</span></button>
+					<span com="">|</span>
+					<button class="btn" id="BUTTON_1647" com="ecp-button" isrender="true"><i
+							class="fa fa-external-link"></i><span>导出</span></button>
+				</div>
+			</div>
+			<table  class="ecp-qzzgrid emplymgmt-10" id="mainGrid" com="ecp-table" false="表格" ng-model="root"></table>
+		</div>
+	</div>
+</div>
+<span class="testSpan emplymgmt-18" id="textSpan"></span>
+<script src="../../../../../ecp/webcore/scripts/ecp.starter.js?mapp.name=mapp.demo"
+		data-main="../../scripts/emp/emplyQuery.controller.js"></script>
+</body>
+</html>

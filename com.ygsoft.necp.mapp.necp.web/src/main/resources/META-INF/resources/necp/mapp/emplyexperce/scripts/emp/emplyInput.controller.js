@@ -1,0 +1,147 @@
+require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.render", 'ecp.utils',"ecp.model",
+		'qzz.idatepicker', 'qzz.grid','bootstrap-select', 'ecp.component.validateBox', "datetimepicker" ],
+	function($, ecp, GenentityController, renderUtil, utils, ecpModel) {
+
+
+		var Controller = function () {
+			this.init();
+		};
+
+		Controller.prototype = {
+			init: function () {
+				this.pager = {
+					page: 0,
+					size: 20
+				};
+				this.gridopt = {
+					colNames: [
+						[
+							"入职日期",
+							"离职日期",
+							"工作单位",
+							"职务",
+							"备注"
+						]
+					],
+					colModels: [
+						{name: "stime", align: "center", width: "50","dataType":'date'},
+						{name: "etime", align: "center", width: "50","dataType":'date'},
+						{name: "company", align: "center", width: "2"},
+						{name: "composition", width: "50", align: "center"},
+						{name: "rmark", align: "center", scale: 2, width: "2"}
+					]
+				};
+				this.render();
+			},
+
+			render: function () {
+				$("#birth").qzzdatepicker({
+					'height' : '34',
+					'underLine' : true,
+					'width' : '100%',
+					'color' : 'rgb(51,&amp;nbsp;51,&amp;nbsp;51)',
+					'cyctype' : 'day',
+					'ng-model' : 'birth'
+				});
+				this.grid = $("#mainGrid").qzzgrid({
+					Align: "alClient",
+					Align: "alClient",
+					shrinkToFit: true,
+					rownumbers: true,
+					pager: true,
+					colNames: [],
+					colModels: [],
+					pageSizeList: [20, 30, 40, 50]
+				});
+				this.grid.refreshTitle(this.gridopt);
+				this.bindDataSource();
+				this.queryData();
+			},
+
+			/**
+			 * 绑定数据源.
+			 */
+			bindDataSource: function() {
+				var me = this;
+				this.dataSource = new ecpModel.DataSource();
+				var arg = utils.getAllArgument();
+				var dataModel = {};
+				$.each(arg, function(k, v) {
+					if (k != "url" && k != "_h") {
+						dataModel[k] = v;
+					}
+				});
+
+				$('#saveBtn').click(function(){
+					//获取员工信息和工作经历
+					var emplyInfo={};
+					emplyInfo.sex = $('#sex').selectpicker('val');
+					emplyInfo.emplyid = $('#emplyid').val();
+					emplyInfo.emplyname = $('#emplyname').val();
+					emplyInfo.age = $('#age').val();
+					emplyInfo.emplyexperce=me.grid.getDisplayAsJson();
+					ecp.RemoteService.doPostAsync(
+						"/necp/mapp/emplyexperce/query/emplyInfoPO/saveOrUpdateEmpInfo",
+						emplyInfo, function(resp) {
+							console.log(resp);
+						}
+					);
+				});
+
+				$('#queryBtn').click(function(){
+					me.queryData();
+				});
+
+				$("#addBtn").on('click', function() {
+					me.grid.append();
+				});
+
+				$("#delBtn").on('click', function() {
+					me.grid.delRecord();
+				});
+
+				this.dataSource.dataModel = dataModel;
+				this.dataSource.bind($(".pageTopQuery"));
+			},
+
+
+
+			queryData: function() {
+				var me = this;
+				var dataModel = me.dataSource.dataModel;
+				dataModel.sex = $('#sex').selectpicker('val');
+				dataModel.emplyname = $('#emplyname').val();
+				dataModel.age = $('#age').val();
+				var params = {
+					pageSize: me.pager.size,
+					pageNum: me.pager.page,
+					example: dataModel
+				};
+				ecp.RemoteService.doPostAsync(
+					"/necp/mapp/emplyexperce/query/emplyInfoPO/query",
+					params, function(resp) {
+						console.log(resp);
+						console.log(resp.isSuccess());
+						if (resp.isError() || resp.data == null) {
+							me.grid.value([]);
+							me.grid.setTotalRecord(0, false);
+							resp.data = resp.data ? ":" + resp.data : "";
+							utils.notify("查询失败" + resp.data);
+							return;
+						}
+						if (resp.isSuccess() && resp.data) {
+							var data = resp.data;
+							me.grid.value(data.content);
+							me.grid.setTotalRecord(data.totalElements, false);
+						}
+						me.grid.refreash(true);
+						me.grid.doResize();
+
+					}
+				);
+			},
+
+		}
+		var c = new Controller();
+	})
+

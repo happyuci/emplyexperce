@@ -1,0 +1,426 @@
+
+/****controlCss****/
+/*ctrlInfo_ba6b8544-e540-48ef-ad45-7368cf004c24_3.1标题_ctrlInfo*/
+/*************************** 通用实体3.1 样式文件 ***************************/
+
+body.djbody { min-width: 1012px; }
+body.djbody .container-fluid { max-width: 1600px; }
+
+
+/***
+标题区
+***/
+.top_wrapper {
+  padding: 10px 0;
+  color: #fff;
+}
+.title_block {
+  display: inline-block;
+  vertical-align: middle;
+}
+.h2_title {
+  margin: 0 10px 0 0;
+  font-size: 22px;
+  display: inline-block;
+}
+.titleNum {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 16px;
+}
+.titleDetails {
+  margin-top: 5px;
+  font-size: 12px;
+}
+.top_wrapper .titleNum .title_djbh , .top_wrapper .titleDetails .title_zdrq {
+  /*height: 24px;*/
+  background-color: transparent;
+  border: none;
+}
+.SelectorMark{
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,.2);
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+/****controlCss****/
+
+/****controlCss****/
+/*ctrlInfo_114c9364-15f6-4439-8bf5-b884fe695812_页面工具栏_ctrlInfo*/
+.navbar-fixed-bottom {
+    position: fixed!important;
+}
+.selectNum {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    min-height: auto;
+}
+.selectNum .text-warning {
+    margin: 0 5px;
+}
+/****controlCss****/
+
+/****controlCss****/
+/*ctrlInfo_0772d6e2-57f0-4538-8252-25d0ac2d21fe_3.1右侧锚点_ctrlInfo*/
+/****controlCss****/
+
+/****controlCss****/
+/*ctrlInfo_ead90d28-bbb6-4fd5-a32e-1d0b7d909012_3.1右侧锚点_ctrlInfo*/
+/*************************** 通用实体3.1 样式文件 ***************************/
+
+/***
+右侧锚点
+***/
+.anchorBlock {
+  position: fixed!important;
+  right: 0;
+  bottom: 42px;
+  z-index: 100;
+}
+.anchor , .anchor:focus {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 42px;
+  height: 42px;
+  padding: 5px;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(118, 142, 156, 0.6);
+}
+.anchor + .anchor { margin-top: 2px; }
+.anchor:hover {
+  background: #768e9c;
+  color: #fff;
+  text-decoration: none;
+}
+.anchor > i {
+  line-height: 36px;
+  font-size: 18px;
+}
+.anchorBlock > .smallPanel {
+    right: -2px;
+    left: auto!important;
+}
+.anchor > .smallPanel {
+    right: -2px;
+    left: auto!important;
+}
+/****controlCss****/
+
+/****controlCss****/
+/*ctrlInfo_0714a176-3509-4eb3-92e5-c0334db58b56_3.1分块区域_ctrlInfo*/
+/*************************** 通用实体3.1 样式文件 ***************************/
+
+body { min-width: 1012px; }
+body .container-fluid { max-width: 1600px; }
+
+
+/***
+四大面板
+***/
+.dj_piece_wrapper { margin: 16px 0; }
+.dj_piece_wrapper .pane-wrapper > .paneTitle {
+  border-left-color: #428bca;
+  font-weight: bold;
+}
+.dj_piece_wrapper .pane-wrapper > .paneTitle > span,
+.dj_piece_wrapper .paneTitle i.arrow {
+  display: inline-block;
+  vertical-align: middle;
+}
+.dj_piece_wrapper .paneTitle i.arrow {
+  float: none;
+  margin-top: 0;
+}
+.tag {
+  padding: 3px 0 0 15px;
+  text-align: right;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tag + div {
+  margin-bottom: 6px;
+  padding-left: 0;
+}
+.piece_content .group { padding-left: 14px; }
+/****controlCss****/
+/****controlCss****/
+/*ctrlInfo_0714a176-3509-4eb3-92e5-c0334db58b56_3.1分块区域_ctrlInfo*/
+/*************************** 通用实体3.1 样式文件 ***************************/
+
+body { min-width: 1012px; }
+body .container-fluid { max-width: 1600px; }
+
+
+/***
+四大面板
+***/
+.dj_piece_wrapper { margin: 16px 0; }
+.dj_piece_wrapper .pane-wrapper > .paneTitle {
+  border-left-color: #428bca;
+  font-weight: bold;
+}
+.dj_piece_wrapper .pane-wrapper > .paneTitle > span,
+.dj_piece_wrapper .paneTitle i.arrow {
+  display: inline-block;
+  vertical-align: middle;
+}
+.dj_piece_wrapper .paneTitle i.arrow {
+  float: none;
+  margin-top: 0;
+}
+.tag {
+  padding: 3px 0 0 15px;
+  text-align: right;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tag + div {
+  margin-bottom: 6px;
+  padding-left: 0;
+}
+.piece_content .group { padding-left: 14px; }
+/****controlCss****/
+        .emplyinput-0 {
+            width: auto;
+		
+        }
+        
+
+        .emplyinput-1 {
+            width: 100%;
+		 overflow: visible;
+		 position: relative;
+		 height: 100%;
+		 min-width: 120px;
+		 min-height: 90px;
+		
+        }
+        
+
+        .emplyinput-2 {
+            width: 151px;
+		 overflow: visible;
+		 position: relative;
+		
+        }
+        
+
+        .emplyinput-3 {
+            width: 90px;
+		 overflow: visible;
+		 position: relative;
+		
+        }
+        
+
+        .emplyinput-4 {
+            display: none;
+		
+        }
+        
+
+        .emplyinput-5 {
+            overflow: visible;
+		 position: relative;
+		 border-color: rgb(51, 51, 51);
+		 padding: 0px;
+		 margin: 0px;
+		 min-height: 34px;
+		 background-color: rgba(0, 0, 0, 0);
+		 text-align: start;
+		 border-width: 0px;
+		
+        }
+        
+
+        .emplyinput-6 {
+            display: inline-block;
+		 width: 100%;
+		 height: auto;
+		 overflow: visible;
+		 position: relative;
+		
+        }
+        
+
+        .emplyinput-7 {
+            text-align: right;
+		 min-height: 40px;
+		
+        }
+        
+
+        .emplyinput-8 {
+            text-overflow: ellipsis;
+		 line-height: 34px;
+		 font-size: 14px;
+		 color: rgb(51, 51, 51);
+		 border-color: rgb(0, 0, 0);
+		 border-style: none;
+		 border-width: 0px;
+		 border-radius: 0px;
+		 text-align: start;
+		 font-family: 微软雅黑;
+		
+        }
+        
+
+        .emplyinput-9 {
+            min-height: 40px;
+		
+        }
+        
+
+        .emplyinput-10 {
+            width: 100%;
+		 font-size: 14px;
+		 color: rgb(51, 51, 51);
+		 text-align: left;
+		
+        }
+        
+
+        .emplyinput-11 {
+            width: 100%;
+		 font-size: 14px;
+		 color: rgb(51, 51, 51);
+		 text-align: right;
+		
+        }
+        
+
+        .emplyinput-12 {
+            width:100%;
+		
+        }
+        
+
+        .emplyinput-13 {
+            height: 28px;
+		 width: 100%;
+		
+        }
+        
+
+        .emplyinput-14 {
+            overflow: visible;
+		 position: relative;
+		 min-height: 34px;
+		 border-color: rgb(51, 51, 51);
+		 padding: 0px;
+		 margin: 0px;
+		 background-color: rgba(0, 0, 0, 0);
+		 text-align: start;
+		 border-width: 0px;
+		
+        }
+        
+
+        .emplyinput-15 {
+            overflow: visible;
+		 position: relative;
+		 border-color: rgb(51, 51, 51);
+		 padding: 0px;
+		 margin: 16px 0px;
+		 min-height: 34px;
+		 background-color: rgba(0, 0, 0, 0);
+		 text-align: start;
+		 border-width: 0px;
+		
+        }
+        
+
+        .emplyinput-16 {
+            overflow: visible;
+		 position: relative;
+		 min-height: 34px;
+		
+        }
+        
+
+        .emplyinput-17 {
+            overflow: visible;
+		 position: relative;
+		 min-height: 200.533px;
+		
+        }
+        
+
+        .emplyinput-18 {
+            overflow: visible;
+		 position: relative;
+		 width: 100%;
+		
+        }
+        
+
+        .emplyinput-19 {
+            width: 100%;
+		 height: 200px;
+		 position: relative;
+		
+        }
+        
+
+        .emplyinput-20 {
+            min-height: 0px;
+		
+        }
+        
+
+        .emplyinput-21 {
+            display: flex;
+		 width: 100%;
+		 height: auto;
+		 overflow: visible;
+		 position: relative;
+		
+        }
+        
+
+        .emplyinput-22 {
+            overflow: visible;
+		 position: relative;
+		 text-align: right;
+		 padding: 0px 10px 0px 0px;
+		 min-height: 34px;
+		 border-color: rgb(51, 51, 51);
+		 margin: 0px;
+		 background-color: rgba(0, 0, 0, 0);
+		 border-width: 0px;
+		
+        }
+        
+
+        .emplyinput-23 {
+            overflow: visible;
+		 position: relative;
+		 margin-left: 5px;
+		 padding: 6px 12px;
+		
+        }
+        
+
+        .emplyinput-24 {
+            overflow: visible;
+		 position: relative;
+		 border-color: rgb(51, 51, 51);
+		 padding: 0px 15px;
+		 margin: 0px;
+		 min-height: 34px;
+		 background-color: rgba(0, 0, 0, 0);
+		 text-align: start;
+		 border-width: 0px;
+		
+        }
+        
