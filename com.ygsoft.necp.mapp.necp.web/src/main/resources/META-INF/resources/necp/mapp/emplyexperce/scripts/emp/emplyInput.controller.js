@@ -5,6 +5,26 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 
 		var Controller = function () {
 			this.init();
+			//初始化基本信息
+			var dataModel=utils.getAllArgument();
+			ecp.RemoteService.doPostAsync(
+				"/necp/mapp/emplyexperce/query/emplyInfoPO/findByEmpId ",
+				dataModel, function(resp) {
+					console.log(resp);
+					var data=resp.data;
+					var content = data;
+					$('#emplyid').val(content[0].emplyid);
+					$('#emplyname').val(content[0].emplyname);
+					$('#age').val(content[0].age);
+					//$('#sex').selectpicker(content[0].sex);
+					//$('#sex').selectpicker('refresh');
+					$('#birth').val(content[0].birth);
+					$('#nat').val(content[0].nat);
+					$('#nation').val(content[0].nation);
+					$('#email').val(content[0].email);
+					$('#gid').val(content[0].gid);
+				}
+			);
 		};
 
 		Controller.prototype = {
@@ -79,6 +99,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 					emplyInfo.emplyid = $('#emplyid').val();
 					emplyInfo.emplyname = $('#emplyname').val();
 					emplyInfo.age = $('#age').val();
+					emplyInfo.gid = $('#gid').val();
 					emplyInfo.emplyexperce=me.grid.getDisplayAsJson();
 					ecp.RemoteService.doPostAsync(
 						"/necp/mapp/emplyexperce/query/emplyInfoPO/saveOrUpdateEmpInfo",
@@ -91,11 +112,11 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				$('#queryBtn').click(function(){
 					me.queryData();
 				});
-
+				//新增
 				$("#addBtn").on('click', function() {
 					me.grid.append();
 				});
-
+				//删除
 				$("#delBtn").on('click', function() {
 					me.grid.delRecord();
 				});
@@ -108,20 +129,17 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 
 			queryData: function() {
 				var me = this;
-				var dataModel = me.dataSource.dataModel;
-				dataModel.sex = $('#sex').selectpicker('val');
-				dataModel.emplyname = $('#emplyname').val();
-				dataModel.age = $('#age').val();
+				var dataModel=utils.getAllArgument( );
 				var params = {
 					pageSize: me.pager.size,
 					pageNum: me.pager.page,
 					example: dataModel
 				};
 				ecp.RemoteService.doPostAsync(
-					"/necp/mapp/emplyexperce/query/emplyInfoPO/query",
+					"/necp/mapp/emplyexperce/query/emplyexpercePO/query",
 					params, function(resp) {
-						console.log(resp);
-						console.log(resp.isSuccess());
+						//console.log(resp);
+						//console.log(resp.isSuccess());
 						if (resp.isError() || resp.data == null) {
 							me.grid.value([]);
 							me.grid.setTotalRecord(0, false);

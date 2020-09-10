@@ -81,12 +81,21 @@ public class EmplyInfoPOContext extends GeneralContext<EmplyInfoPO, String, IEmp
 		if(!list.isEmpty()){  //已经存在的员工，为更新操作,删除关联工作经历
 			emplyexpercePODao.deleteByEmplyid(emplyInfoPO.getEmplyid());
 		}
-		emplyInfoPO.setGid(UuidUtil.buildRandomUUID().toString());
+		if(emplyInfoPO.getGid()==null||"".equals(emplyInfoPO.getGid())){
+			emplyInfoPO.setGid(UuidUtil.buildRandomUUID().toString());
+		}
 		EmplyInfoPO v = this.getDao().save(emplyInfoPO);
 		for(EmplyexpercePO emplyexpercePO:emplyInfoPO.getEmplyexperce()){
 			emplyexpercePO.setGid(UuidUtil.buildRandomUUID().toString());
+			emplyexpercePO.setEmplyid(emplyInfoPO.getEmplyid());
 			emplyexpercePODao.save(emplyexpercePO);
 		}
+	}
+
+	@Override
+	public List<EmplyInfoPO> findById(String id) {
+		List<EmplyInfoPO> list = this.getDao().findByEmplyid(id);
+		return list;
 	}
 
 	private Specification<EmplyInfoPO> getSupplierPaySummarySpection(Map<String, Object> example) {
@@ -108,6 +117,8 @@ public class EmplyInfoPOContext extends GeneralContext<EmplyInfoPO, String, IEmp
 			} else if (StringUtils.equals("emplyname", name) && !"".equals(value)) {
 				list.add(cb.equal(root.get("emplyname"), value));
 			} else if (StringUtils.equals("sex", name) && !"".equals(value)) {
+				list.add(cb.equal(root.get("sex"), value));
+			} else if (StringUtils.equals("emplyid", name) && !"".equals(value)) {
 				list.add(cb.equal(root.get("sex"), value));
 			} else {
 				if (attributeMap.containsKey(name)) {

@@ -84,10 +84,27 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				$('#queryBtn').click(function(){
 					me.queryData();
 				});
-
+				//新增
 				$("#addBtn").on('click', function() {
 					window.open('emplyInput.html','_blank');
 					//window.location.href="emplyInput.html";
+				});
+				//修改
+				$("#updateBtn").on('click', function() {
+					var emplyInfo={};
+					emplyInfo=me.grid.dataSet.getSelectedData();
+					window.open('emplyInput.html?emplyid='+emplyInfo.emplyid,'_blank');
+				});
+				//删除
+				$('#delBtn').click(function(){
+					var emplyInfo={};
+					emplyInfo=me.grid.dataSet.getSelectedData();
+					ecp.RemoteService.doPostAsync(
+						"/necp/mapp/emplyexperce/query/emplyInfoPO/delete",
+						emplyInfo, function(resp) {
+							me.grid.delRecord();
+						}
+					);
 				});
 
 				this.dataSource.dataModel = dataModel;

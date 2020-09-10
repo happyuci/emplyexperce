@@ -7,6 +7,7 @@ package com.ygsoft.necp.mapp.necp.impl.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ygsoft.necp.mapp.necp.impl.context.Condition;
+import com.ygsoft.necp.mapp.necp.service.domain.model.EmplyInfoPO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -35,24 +36,17 @@ import java.util.Map;
 @RequestMapping("/necp/mapp/emplyexperce/query/emplyexpercePO")
 public class EmplyexpercePOQueryService extends GeneralQueryRestService<EmplyexpercePO, String, IEmplyexpercePOContext>
 		implements IEmplyexpercePOQueryService {
-	@RequestMapping("/test")
-	public Map<String, Object> querySupplierDesc1(@RequestBody String data) {
-
-		System.out.println("data");
-
-
-		return null;
-	}
 
 	@PostMapping("/query")
-	public JSONObject querySupplierDesc2(@RequestBody Condition requestMap) {
+	public Page<EmplyexpercePO> querySupplierDesc2(@RequestBody Condition requestMap) {
 		final int pageSize = requestMap.getPageSize();
 		final int pageNum =requestMap.getPageNum();
 		Map<String, Object> example =JSON.parseObject(requestMap.getExample(), HashMap.class);
 		Pageable pageRequest=new PageRequest(pageNum, pageSize);
 		JSONObject resp=new JSONObject();
 		Page<EmplyexpercePO> page=this.getContext().queryByConditionList(example,pageRequest);
-		resp.put("data",page.getContent());
-		return resp;
+		return page;
 	}
+
+
 }
