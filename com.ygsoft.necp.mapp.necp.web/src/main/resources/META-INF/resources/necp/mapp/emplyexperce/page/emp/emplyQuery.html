@@ -57,11 +57,8 @@
 							</div>
 						</div>
 						<div class="col-2" id="ecpcol_9771" candrop="ecp-col" isrender="true">
-							<select class="entitySelectPlace select-default form-control"
-									id="sex" data-live-search='true'>
-								<option data-tokens='' value=""></option>
-								<option data-tokens='0' value="0">男</option>
-								<option data-tokens='1' value="1">女</option>
+							<select class="entitySelectPlace select-default form-control" id="sex">
+								<option>请选择...</option>
 							</select>
 						</div>
 						<div style="margin-top: 10px">
@@ -71,7 +68,7 @@
 							</div>
 							<div class="col-2" id="ecpcol_2975" candrop="ecp-col" isrender="true">
 								<input class="datepicker ecp-qzzdatepicker form-control emplymgmt-8" id="birth" type="text"
-									   onfocus="this.blur()" isrender="true" ng-model="birth" data-date-format='yyyy-MM-dd'
+									   onfocus="this.blur()" isrender="true"  data-date-format='yyyy-MM-dd'
 									   ng-datatype="date"/>
 							</div>
 						</div>
@@ -94,11 +91,11 @@
 			<div style="top:-50px;" class="tableTopContainer clearfix col-12" id="ecpcol_2243" candrop="ecp-col">
 				<div class="tableTopBtnGroup" id="ecptabletool_9210" com="ecp-table-tool">
 					<button class="btn" id="addBtn" com="ecp-button" isrender="true"><i
-							class="moon-chuantou"></i><span>新增</span></button>
+							class="fa fa-plus"></i><span>新增</span></button>
 					<button class="btn" id="updateBtn" com="ecp-button" isrender="true"><i
 							class="fa fa-cog"></i><span>修改</span></button>
 					<button class="btn" id="delBtn" com="ecp-button" isrender="true"><i
-							class="fa fa-cog"></i><span>删除</span></button>
+							class="fa fa-minus-circle"></i><span>删除</span></button>
 				</div>
 			</div>
 			<table  class="ecp-qzzgrid emplymgmt-20" id="mainGrid" com="ecp-table" false="表格" ng-model="root"></table>

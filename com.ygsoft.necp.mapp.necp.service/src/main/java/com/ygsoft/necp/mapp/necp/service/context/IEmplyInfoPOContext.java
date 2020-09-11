@@ -21,10 +21,17 @@ import java.util.Map;
  */
 public interface IEmplyInfoPOContext extends IContext<EmplyInfoPO, String> {
 
-    public Page<EmplyInfoPO> queryByConditionList(Map<String,Object> map, Pageable pageable);
+     Page<EmplyInfoPO> queryByConditionList(Map<String,Object> map, Pageable pageable);
 
 
      void saveOrUpdateEmpInfo(EmplyInfoPO emplyInfoPO);
 
     List<EmplyInfoPO> findById(String id);
+
+    /**
+     * 删除员工和工作相关经历
+     * @param emplyInfoPO
+     */
+    void deleteEmpInfo(EmplyInfoPO emplyInfoPO);
+
 }

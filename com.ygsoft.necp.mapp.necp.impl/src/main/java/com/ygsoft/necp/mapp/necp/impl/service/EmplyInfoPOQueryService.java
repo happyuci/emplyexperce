@@ -5,10 +5,8 @@
 package com.ygsoft.necp.mapp.necp.impl.service;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.ygsoft.necp.core.service.dcispec.EcpPostMapping;
 import com.ygsoft.necp.core.service.dcispec.GeneralQueryRestService;
-import com.ygsoft.necp.core.service.function.Optional;
 import com.ygsoft.necp.mapp.necp.impl.context.Condition;
 import com.ygsoft.necp.mapp.necp.service.context.IEmplyInfoPOContext;
 import com.ygsoft.necp.mapp.necp.service.domain.model.EmplyInfoPO;
@@ -42,7 +40,6 @@ public class EmplyInfoPOQueryService extends GeneralQueryRestService<EmplyInfoPO
 		final int pageNum =requestMap.getPageNum();
 		Map<String, Object> example = JSON.parseObject(requestMap.getExample(), HashMap.class);
 		Pageable pageRequest=new PageRequest(pageNum, pageSize);
-		JSONObject resp=new JSONObject();
 		Page<EmplyInfoPO> page=this.getContext().queryByConditionList(example,pageRequest);
 		return page;
 	}
@@ -63,4 +60,15 @@ public class EmplyInfoPOQueryService extends GeneralQueryRestService<EmplyInfoPO
 		List<EmplyInfoPO> list = this.getContext().findById(emplyInfoPO.getEmplyid());
 		return list;
 	}
+
+	/**
+	 * 删除员工信息及工作经历
+	 * @param emplyInfoPO
+	 * @return
+	 */
+	@EcpPostMapping({"/delete"})
+	public void delete(@RequestBody EmplyInfoPO emplyInfoPO)  {
+		this.getContext().deleteEmpInfo(emplyInfoPO);
+	}
+
 }

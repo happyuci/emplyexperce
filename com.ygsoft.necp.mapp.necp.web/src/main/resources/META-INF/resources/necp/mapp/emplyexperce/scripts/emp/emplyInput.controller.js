@@ -1,30 +1,34 @@
-require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.render", 'ecp.utils',"ecp.model",
+require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.render", 'ecp.utils',"ecp.model",'ecp.utils.window',
 		'qzz.idatepicker', 'qzz.grid','bootstrap-select', 'ecp.component.validateBox', "datetimepicker" ],
-	function($, ecp, GenentityController, renderUtil, utils, ecpModel) {
+	function($, ecp, GenentityController, renderUtil, utils, ecpModel,$windowUtil) {
 
 
 		var Controller = function () {
 			this.init();
 			//初始化基本信息
 			var dataModel=utils.getAllArgument();
-			ecp.RemoteService.doPostAsync(
-				"/necp/mapp/emplyexperce/query/emplyInfoPO/findByEmpId ",
-				dataModel, function(resp) {
-					console.log(resp);
-					var data=resp.data;
-					var content = data;
-					$('#emplyid').val(content[0].emplyid);
-					$('#emplyname').val(content[0].emplyname);
-					$('#age').val(content[0].age);
-					//$('#sex').selectpicker(content[0].sex);
-					//$('#sex').selectpicker('refresh');
-					$('#birth').val(content[0].birth);
-					$('#nat').val(content[0].nat);
-					$('#nation').val(content[0].nation);
-					$('#email').val(content[0].email);
-					$('#gid').val(content[0].gid);
-				}
-			);
+			if(dataModel.emplyid==null){
+				return;
+			}else{
+				ecp.RemoteService.doPostAsync(
+					"/necp/mapp/emplyexperce/query/emplyInfoPO/findByEmpId ",
+					dataModel, function(resp) {
+						var data=resp.data;
+						var content = data;
+						$('#emplyid').val(content[0].emplyid);
+						$('#emplyname').val(content[0].emplyname);
+						$('#age').val(content[0].age);
+						//$('#sex').selectpicker(content[0].sex);
+						//$('#sex').selectpicker('refresh');
+						$('#birth').val(content[0].birth);
+						$('#nat').val(content[0].nat);
+						$('#nation').val(content[0].nation);
+						$('#email').val(content[0].email);
+						$('#gid').val(content[0].gid);
+					}
+				);
+			}
+
 		};
 
 		Controller.prototype = {
@@ -120,6 +124,10 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				$("#delBtn").on('click', function() {
 					me.grid.delRecord();
 				});
+				//推退出
+				$("#stdExitBtn").on('click', function() {
+					$windowUtil.registAutoClose(100);
+				});
 
 				this.dataSource.dataModel = dataModel;
 				this.dataSource.bind($(".pageTopQuery"));
@@ -129,7 +137,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 
 			queryData: function() {
 				var me = this;
-				var dataModel=utils.getAllArgument( );
+				var dataModel=utils.getAllArgument();
 				var params = {
 					pageSize: me.pager.size,
 					pageNum: me.pager.page,

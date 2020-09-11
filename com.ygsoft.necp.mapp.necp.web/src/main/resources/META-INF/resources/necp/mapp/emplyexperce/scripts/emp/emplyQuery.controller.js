@@ -1,12 +1,9 @@
-require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.render", 'ecp.utils',"ecp.model",
-		'qzz.idatepicker', 'qzz.grid','bootstrap-select', 'ecp.component.validateBox', "datetimepicker" ],
-	function($, ecp, GenentityController, renderUtil, utils, ecpModel) {
-
-
+require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.render", 'ecp.utils',"ecp.model","ecp.component.dialog",'ecp.utils.window',
+		'ecp.component.comboBox', 'qzz.idatepicker', 'qzz.grid','bootstrap-select', 'ecp.component.validateBox', "datetimepicker" ],
+	function($, ecp, GenentityController, renderUtil, utils, ecpModel,$dialog,$windowUtil) {
 		var Controller = function () {
 			this.init();
 		};
-
 		Controller.prototype = {
 			init: function () {
 				this.pager = {
@@ -35,7 +32,15 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 						{name: "birth", align: "center", width: "2",dataType:'date'}
 					]
 				};
-				$('#sex').selectpicker();
+				var option = {
+					idField: 'value',
+					textField: 'text',
+					data :　[
+						{'value':1,'text':'男'},
+						{'value':0,'text':'女'}
+					]
+				}
+				$('#sex').comboBox(option);
 				this.render();
 			},
 
@@ -61,6 +66,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				this.grid.refreshTitle(this.gridopt);
 				this.bindDataSource();
 				this.queryData();
+				this.bindGridEvent();
 			},
 
 			/**
@@ -76,8 +82,15 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 						dataModel[k] = v;
 					}
 				});
+				$("#sex").comboBox(true).bind("change", function() {
+					me.queryData();
+				});
 
 				$('#saveBtn').click(function(){
+					me.queryData();
+				});
+
+				$(".clearBtn").click(function(e) {
 					me.queryData();
 				});
 
@@ -86,7 +99,8 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				});
 				//新增
 				$("#addBtn").on('click', function() {
-					window.open('emplyInput.html','_blank');
+					//window.open('emplyInput.html','_blank');
+					$windowUtil.openWindow('emplyInput.html','ECP');
 					//window.location.href="emplyInput.html";
 				});
 				//修改
@@ -99,26 +113,60 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				$('#delBtn').click(function(){
 					var emplyInfo={};
 					emplyInfo=me.grid.dataSet.getSelectedData();
-					ecp.RemoteService.doPostAsync(
-						"/necp/mapp/emplyexperce/query/emplyInfoPO/delete",
-						emplyInfo, function(resp) {
-							me.grid.delRecord();
+					 $dialog.show({
+						title:'提示',
+						content:'是否删除当前数据？',
+						showCloseButton:false,
+						isTip:true,
+						otherButtons:['确定','取消'],
+						otherButtonStyles:['btn-default', 'btn-default', 'btn-primary'],
+						clickButton : function(sender, modal, index){
+							if(index == 1){   //'取消'按钮
+								modal.modal('hide');
+							}
+							if(index == 0){
+								ecp.RemoteService.doPostAsync(
+									"/necp/mapp/emplyexperce/query/emplyInfoPO/delete",
+									emplyInfo,
+									function(resp) {
+										if (resp.isError()) {
+											resp.data = resp.data ? ":" + resp.data : "";
+											utils.notify("删除失败" + resp.data);
+											return;
+										}
+										utils.notify("删除成功");
+										me.grid.delRecord();
+										modal.modal('hide');
+
+									}
+								);
+
+							}
 						}
-					);
+					});
 				});
 
 				this.dataSource.dataModel = dataModel;
 				this.dataSource.bind($(".pageTopQuery"));
 			},
 
-
+			bindGridEvent: function() {
+				this.grid.dataSet.bind("onFormat_sex", function (node, fieldName, dataType, value, metaItem) {
+					if(this.getValue(fieldName) === 1) {
+						return '男';
+					} else {
+						return '女';
+					}
+				});
+			},
 
 			queryData: function() {
 				var me = this;
 				var dataModel = me.dataSource.dataModel;
-				dataModel.sex = $('#sex').selectpicker('val');
+				dataModel.sex = $('#sex').comboBox(true).getValue();
 				dataModel.emplyname = $('#emplyname').val();
 				dataModel.age = $('#age').val();
+				dataModel.birth = utils.formatDate($("#birth").datetimepicker("getDate"), "yyyy-MM-dd")
 				var params = {
 					pageSize: me.pager.size,
 					pageNum: me.pager.page,

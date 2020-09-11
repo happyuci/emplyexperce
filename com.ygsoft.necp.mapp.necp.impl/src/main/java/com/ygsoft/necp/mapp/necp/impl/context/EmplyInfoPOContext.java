@@ -98,6 +98,17 @@ public class EmplyInfoPOContext extends GeneralContext<EmplyInfoPO, String, IEmp
 		return list;
 	}
 
+
+	@Override
+	public void deleteEmpInfo(EmplyInfoPO emplyInfoPO) {
+		//删除员工信息
+		this.getDao().delete(emplyInfoPO.getGid());
+		//删除工作经历
+		emplyexpercePODao.deleteByEmplyid(emplyInfoPO.getEmplyid());
+
+	}
+
+
 	private Specification<EmplyInfoPO> getSupplierPaySummarySpection(Map<String, Object> example) {
 		return (Specification<EmplyInfoPO>) (root, query, cb) -> {
 			return cb.and(generateSpecWhere(example, root, cb));
