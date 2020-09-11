@@ -1,8 +1,6 @@
-require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.render", 'ecp.utils',"ecp.model",'ecp.utils.window',
-		'qzz.idatepicker', 'qzz.grid','bootstrap-select', 'ecp.component.validateBox', "datetimepicker" ],
-	function($, ecp, GenentityController, renderUtil, utils, ecpModel,$windowUtil) {
-
-
+require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.render", 'ecp.utils',"ecp.model",'ecp.utils.window',"ecp.component.dialog",
+		'qzz.idatepicker', 'qzz.grid','bootstrap-select', 'ecp.component.validateBox', "datetimepicker" ,'ecp.component.comboBox'],
+	function($, ecp, GenentityController, renderUtil, utils, ecpModel,$windowUtil,$dialog) {
 		var Controller = function () {
 			this.init();
 			//初始化基本信息
@@ -77,8 +75,18 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 					colModels: [],
 					pageSizeList: [20, 30, 40, 50]
 				});
+				var option = {
+					idField: 'value',
+					textField: 'text',
+					data :　[
+						{'value':1,'text':'男'},
+						{'value':0,'text':'女'}
+					]
+				}
+				$('#sex').comboBox(option);
 				this.grid.refreshTitle(this.gridopt);
 				this.bindDataSource();
+				this.bindEvent();
 				this.queryData();
 			},
 
@@ -99,7 +107,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				$('#saveBtn').click(function(){
 					//获取员工信息和工作经历
 					var emplyInfo={};
-					emplyInfo.sex = $('#sex').selectpicker('val');
+					emplyInfo.sex = $('#sex').comboBox(true).getValue()==null?'':$('#sex').comboBox(true).getValue();
 					emplyInfo.emplyid = $('#emplyid').val();
 					emplyInfo.emplyname = $('#emplyname').val();
 					emplyInfo.age = $('#age').val();
@@ -113,6 +121,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 					);
 				});
 
+
 				$('#queryBtn').click(function(){
 					me.queryData();
 				});
@@ -124,13 +133,54 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				$("#delBtn").on('click', function() {
 					me.grid.delRecord();
 				});
-				//推退出
-				$("#stdExitBtn").on('click', function() {
-					$windowUtil.registAutoClose(100);
+				//保存退出
+				// 关闭按钮点击事件
+				$('#stdExitBtn').on("click", function() {
+					$dialog.dialog({
+						title : '您正在进行关闭页面操作', // 模态窗标题
+						content : '系统不会保存您未保存的数据，确定要关闭当前页面吗？', // 模态窗内容
+						isTip : true, // 标准的提示窗口
+						showCloseButton : false, // 不显示关闭按钮
+						otherButtons : [ '取消', '确定' ], // 增加两个按钮
+						otherButtonStyles : [ 'btn-link', 'btn-primary' ], // 按钮样式,
+						clickButton : function(sender, modal, index) {
+							modal.modal('hide'); // 关闭模态窗
+							if (index == 1) { // 确定按钮
+								window.opener=null;
+								window.close();
+							}
+						}
+					});
 				});
 
 				this.dataSource.dataModel = dataModel;
 				this.dataSource.bind($(".pageTopQuery"));
+			},
+
+			// 绑定事件
+			bindEvent : function() {
+
+				// 姓名输入效验
+				$('#emplyname').validateBox({
+					rules : {
+						expression : /^([\u4e00-\u9fa5a-zA-Z]){1,10}$/,
+						formatsl : '请输入真实有效的姓名！'
+					}
+				});
+				// 年龄
+				$('#age').validateBox({
+					rules : {
+						expression :  /^(?:[1-9][0-9]?|1[01][0-9]|120)$/,
+						formatsl : '请输入真实年龄！'
+					}
+				});
+				//邮箱
+				$('#email').validateBox({
+					rules: {
+						expression: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+						formatsl: '请输入正确邮箱格式。'
+					}
+				});
 			},
 
 

@@ -1,143 +1,203 @@
-<!DOCTYPE html><html lang="zh-cn" class="no-js emplyinput-0" pageid="emplyinput"><!--<![endif]--><!-- BEGIN HEAD --><head>
-	<meta charset="utf-8"/>
-	<title>职工录入</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<meta content="width=device-width, initial-scale=1" name="viewport"/>
-	<meta content="" name="description"/>
-	<meta content="" name="author"/>
-	<!-- 平台ECP3.0通用样式 -->
-	<link rel="stylesheet" href="../../../../../assets/std/themes/default/style.css"/>
-	<link rel="stylesheet" href="../../../../../assets/std/themes/default/style-template.css"/>
-	<link rel="stylesheet" href="../../../../../assets/necp/themes/default/style-ecp-plugins.css"/>
-	<link rel="stylesheet" href="../../../../../assets/necp/themes/default/style-ecp.css"/>
-	<link rel="stylesheet" href="../../../../../assets/std/themes/default/font-awesome/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="../../../../../assets/std/themes/default/icomoon/icomoon.css"/>
-	<link rel="stylesheet" href="../../css/xdeer.css"/>
-	<link rel="stylesheet" href="../../css/emp/emplyInput.css"/>
+<!DOCTYPE html>
+<html lang="zh-cn" class="no-js emplyinput-0" pageid="emplyinput"><!--<![endif]--><!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8"/>
+    <title>职工录入</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- 平台ECP3.0通用样式 -->
+    <link rel="stylesheet" href="../../../../../assets/std/themes/default/style.css"/>
+    <link rel="stylesheet" href="../../../../../assets/std/themes/default/style-template.css"/>
+    <link rel="stylesheet" href="../../../../../assets/necp/themes/default/style-ecp-plugins.css"/>
+    <link rel="stylesheet" href="../../../../../assets/necp/themes/default/style-ecp.css"/>
+    <link rel="stylesheet" href="../../../../../assets/std/themes/default/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../../../../assets/std/themes/default/icomoon/icomoon.css"/>
+    <link rel="stylesheet" href="../../css/xdeer.css"/>
+    <link rel="stylesheet" href="../../css/emp/emplyInput.css"/>
 </head>
 <body version="3.1" class="djbody" xv="3.1.0">
-	<div class="page-container emplyinput-1" candrop="ecp-rect">
-		<div class="col-12" candrop="ecp-col" id="ecpcol_1522">
-		<div class="col-12" candrop="ecp-col" id="ecpcol_6636">
-			<div class="pageTop" candrop="ecp-rect" id="ecprect_3911">
-				<div class="container-fluid">
-					<div class="top_wrapper">
-						<div class="title_block">
-							<h2 class="h2_title">员工信息录入</h2>
-							<span>|</span>
-							<span class="titleNum">
-            <span>编号：</span>
-							<input com="ecp-text" class="title_djbh readOnly validatebox-text DisableBG emplyinput-2" value="236" readonly="readonly"/>
-							</span>
-							<div class="titleDetails">
-								<span>制单日期：</span>
-								<span class="ui-grace-datepicker-dateInput">
-						<input class="title_zdrq readOnly hasDatepicker emplyinput-3" com="ecp-text" value="2016-08-09" readonly="readonly"/>
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div></div>
-		<div class="col-12" candrop="ecp-col" id="ecpcol_0981">
-			<div class="container-fluid" candrop="ecp-col" id="ecprect_7446">
-				<div id="ecpcol_9488" class="dj_piece_wrapper" candrop="ecp-col">
-					<div class="pane-wrapper mb-flag-container-canedit" candrop="ecp-col" id="ecpcol_2770">
-						<div class="paneTitle">
-							<span>基本信息</span>
-							<i class="arrow" title="折叠"></i>
-						</div>
-					</div>
-					<input type="hidden" id="gid" name="gid"/>
-					<div class="piece_content" candrop="ecp-rect" id="ecprect_2479">
-						<div class="col-12 emplyinput-5" candrop="ecp-col" id="ecpcol_9766">
-							<div class="padding-tb-3 emplyinput-6" candrop="ecp-rect" id="ecprect_6890" false="主表表单1">
-							<div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_8264" isrender="true"><div class="ellipsis emplyinput-8" com="ecp-label" id="emplyid_label" isrender="true">  员工id：
+<div class="page-container emplyinput-1" candrop="ecp-rect">
+    <div class="col-12" candrop="ecp-col" id="ecpcol_1522">
+        <div class="col-12" candrop="ecp-col" id="ecpcol_6636">
+            <div class="pageTop" candrop="ecp-rect" id="ecprect_3911">
+                <div class="container-fluid">
+                    <div class="top_wrapper">
+                        <div class="title_block">
+                            <h2 class="h2_title">员工信息录入</h2>
+                           <!-- <span>|</span>
+                                <span class="titleNum">
+                                 <span>编号：</span>
+                                <input com="ecp-text" class="title_djbh readOnly validatebox-text DisableBG emplyinput-2"
+                                       value="236" readonly="readonly"/>
+                                </span>
+                            <div class="titleDetails">
+                                <span>制单日期：</span>
+                                <span class="ui-grace-datepicker-dateInput">
+                                    <input class="title_zdrq readOnly hasDatepicker emplyinput-3" com="ecp-text" value="2016-08-09" readonly="readonly"/>
+                                </span>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div><div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_2681" isrender="true"><input type="text" class="form-control emplyinput-10" autocomplete="off" com="ecp-text" id="emplyid" ng-model="emplyid" isrender="true"/>
-        </div><div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_094" isrender="true"><div class="ellipsis emplyinput-8" com="ecp-label" id="emplyname_label" isrender="true">  员工名称：
+    </div>
+    <div class="col-12" candrop="ecp-col" id="ecpcol_0981">
+        <div class="container-fluid" candrop="ecp-col" id="ecprect_7446">
+            <div id="ecpcol_9488" class="dj_piece_wrapper" candrop="ecp-col">
+                <div class="pane-wrapper mb-flag-container-canedit" candrop="ecp-col" id="ecpcol_2770">
+                    <div class="paneTitle">
+                        <span>基本信息</span>
+                        <i class="arrow" title="折叠"></i>
+                    </div>
+                </div>
+                <input type="hidden" id="gid" name="gid"/>
+                <div class="piece_content" candrop="ecp-rect" id="ecprect_2479">
+                    <div class="col-12 emplyinput-5" candrop="ecp-col" id="ecpcol_9766">
+                        <div class="padding-tb-3 emplyinput-6" candrop="ecp-rect" id="ecprect_6890" false="主表表单1">
+                            <div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_8264" isrender="true">
+                                <div class="ellipsis emplyinput-8" com="ecp-label" id="emplyid_label" isrender="true">
+                                    员工id：
+                                </div>
+                            </div>
+                            <div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_2681" isrender="true"><input
+                                    type="text" class="form-control emplyinput-10" autocomplete="off" com="ecp-text"
+                                    id="emplyid" ng-model="emplyid" isrender="true"/>
+                            </div>
+                            <div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_094" isrender="true">
+                                <div class="ellipsis emplyinput-8" com="ecp-label" id="emplyname_label" isrender="true">
+                                    员工名称：
+                                </div>
+                            </div>
+                            <div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_1075" isrender="true"><input
+                                    type="text" class="form-control emplyinput-10" autocomplete="off" com="ecp-text"
+                                    id="emplyname" isrender="true"/>
+                            </div>
+                            <div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_7812" isrender="true">
+                                <div class="ellipsis emplyinput-8" com="ecp-label" id="age_label" isrender="true"> 年龄：
+                                </div>
+                            </div>
+                            <div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_2756" isrender="true">
+                                <input type="text" datatype="number"
+                                    class="ecp-component-numberBox form-control emplyinput-11"
+                                     id="age"  isrender="true"/>
+                            </div>
+                            <div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_3538" isrender="true">
+                                <div class="ellipsis emplyinput-8" com="ecp-label" id="sex_label" isrender="true"> 性别：
+                                </div>
+                            </div>
+                            <div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_2263" isrender="true">
+                                <select class="entitySelectPlace select-default form-control" id="sex">
+                                    <option>请选择...</option>
+                                </select>
+                            </div>
+                            <div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_9115" isrender="true">
+                                <div class="ellipsis emplyinput-8" com="ecp-label" id="birth_label" isrender="true"> 生日：
+                                </div>
+                            </div>
+                            <div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_0893" isrender="true"><input
+                                    readonly="" class="datepicker ecp-qzzdatepicker form-control emplyinput-13"
+                                    datatype="date"
+                                    data-inputer="{'moduleName':'qzz.idatepicker','renderFn':'qzzdatepicker'}"
+                                    type="text"
+                                    data-option="{'height':'28','underLine':false,'width':'100%','color':'rgb(51,&amp;nbsp;51,&amp;nbsp;51)','cyctype':'day','showTime':false,'defValue':' ','backgroundColor':'&amp;amp;nbsp;','disabled':false,'readOnly':false,'disInput':true,'ng-model':'birth','scale':0,'mask':'*#','typeId':'','classId':''}"
+                                    com="ecp-qzzdatepicker" id="birth" ng-model="birth" isrender="true"/>
+                            </div>
+                            <div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_3360" isrender="true">
+                                <div class="ellipsis emplyinput-8" com="ecp-label" id="nat_label" isrender="true"> 籍贯：
+                                </div>
+                            </div>
+                            <div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_5951" isrender="true"><input
+                                    type="text" class="form-control emplyinput-10" autocomplete="off" com="ecp-text"
+                                    id="nat" ng-model="nat" isrender="true"/>
+                            </div>
+                            <div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_1934" isrender="true">
+                                <div class="ellipsis emplyinput-8" com="ecp-label" id="nation_label" isrender="true">
+                                    民族：
+                                </div>
+                            </div>
+                            <div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_7475" isrender="true"><input
+                                    type="text" class="form-control emplyinput-10" autocomplete="off" com="ecp-text"
+                                    id="nation" ng-model="nation" isrender="true"/>
+                            </div>
+                            <div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_4008" isrender="true">
+                                <div class="ellipsis emplyinput-8" com="ecp-label" id="email_label" isrender="true"> 邮件：
+                                </div>
+                            </div>
+                            <div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_2913" isrender="true">
+                                <input type="text" class="form-control emplyinput-10" autocomplete="off" com="ecp-text"
+                                    id="email" isrender="true"/>
+                            </div>
+                            <div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_1913" isrender="true"></div>
+                            <div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_1338" isrender="true"></div>
+                        </div>
+                        <div class="emplyinput-6" candrop="ecp-rect" id="ecprect_1765">
+                            <div class="col-12 emplyinput-14" candrop="ecp-col" id="ecpcol_2699">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div><div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_1075" isrender="true"><input type="text" class="form-control emplyinput-10" autocomplete="off" com="ecp-text" id="emplyname" ng-model="emplyname" isrender="true"/>
-        </div><div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_7812" isrender="true"><div class="ellipsis emplyinput-8" com="ecp-label" id="age_label" isrender="true">  年龄：
+    </div>
+    <div class="col-12" candrop="ecp-col" id="ecpcol_1522">
+        <div class="container-fluid" candrop="ecp-col" id="ecprect_9770">
+            <div id="ecpcol_7025" class="dj_piece_wrapper emplyinput-15" candrop="ecp-col">
+                <div class="pane-wrapper mb-flag-container-canedit" candrop="ecp-col" id="ecpcol_9529">
+                    <div class="paneTitle">
+                        <span>工作经历</span>
+                        <i class="arrow" title="折叠"></i>
+                    </div>
+                </div>
+                <div class="piece_content" candrop="ecp-rect" id="ecprect_7899">
+                    <div class="col-12" candrop="ecp-col" id="ecpcol_4228">
+                        <div class="emplyinput-6" candrop="ecp-rect" id="ecprect_3472">
+                            <div class="col-12 emplyinput-16" candrop="ecp-col" id="ecpcol_0419">
+                                <div class="tableTopContainer clearfix" com="ecp-table-tool" id="ecptabletool_7569">
+                                    <div class="btn-group tableTopBtnGroup">
+                                        <button com="ecp-button" id="addBtn" class="btn" isrender="true"><i
+                                                class="fa fa-plus"></i><span>新增</span></button>
+                                        <button com="ecp-button" id="delBtn" class="btn" isrender="true"><i
+                                                class="fa fa-times"></i><span>删除</span></button>
+                                        <button com="ecp-button" id="BUTTON_0502" class="btn" isrender="true"><i
+                                                class="fa fa-pencil"></i><span>修改</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 emplyinput-17" candrop="ecp-col" id="ecpcol_7994">
+                                <table id="mainGrid" class="ecp-qzzgrid emplyinput-18"
+                                       data-option="{'height':'200px','Align':'alTop','suitToFit':true,'absolute':false,'colNames':[['入职日期','离职日期','工作单位','职务','备注']],'colModels':[{'name':'stime','align':'center','editType':'date','dataName':'stime','caption':'入职日期','lockWidth':false},{'name':'etime','align':'center','editType':'date','dataName':'etime','caption':'离职日期','lockWidth':false},{'name':'company','align':'left','dataName':'company','caption':'工作单位','lockWidth':false},{'name':'composition','align':'left','dataName':'composition','caption':'职务','lockWidth':false},{'name':'rmark','align':'left','dataName':'rmark','caption':'备注','lockWidth':false}],'rownumbers':true,'pager':false,'pageSize':'10','total':false,'subtotal':false,'sort':true,'filter':true,'multiFirst':true,'multiSelect':false,'treeGrid':false,'isExpanded':true,'shrinkToFit':true,'initSort':false,'sumAllLevel':false,'cellEdit':true,'rowHeight':'42','ng-model':'ref_EmplyexperceVO','tempFlagName':'子表表格','dataName':'ref_EmplyexperceVO'}"
+                                       com="ecp-table" id="ref_EmplyexperceVO" ng-model="ref_EmplyexperceVO"
+                                       false="子表表格"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div><div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_2756" isrender="true"><input type="text" datatype="number" class="ecp-component-numberBox form-control emplyinput-11" data-option="{'mask':'*#','textAlign':'right','font-size':'14px','color':'rgb(51, 51, 51)','backgroundColor':'&amp;nbsp;','font-weight':'false','disabled':'false','readOnly':'false','required':false,'thousandsSeparator':true,'borderClass':'form-control','ng-model':'age','scale':0,'typeId':'','classId':''}" com="ecp-component-numberBox" id="age" ng-model="age" isrender="true"/>
-        </div><div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_3538" isrender="true"><div class="ellipsis emplyinput-8" com="ecp-label" id="sex_label" isrender="true">  性别：
+    </div>
+    <div class="col-12 emplyinput-20" candrop="ecp-col" id="ecpcol_1802">
+        <div class="footerBar navbar-fixed-bottom" candrop="ecp-rect" hasfixed="true" id="ecprect_8732">
+            <div class="emplyinput-21" candrop="ecp-rect" id="ecprect_8984">
+                <div class="col-6 emplyinput-16" candrop="ecp-col" id="ecpcol_9784"></div>
+                <div class="col-6 emplyinput-22" candrop="ecp-col" id="ecpcol_2766">
+                    <button class="btn-default btn" com="ecp-button" id="stdExitBtn">关闭</button>
+                    <button class="btn-primary btn" com="ecp-button" id="saveBtn">保存</button>
+                </div>
+            </div>
         </div>
-        </div><div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_2263" isrender="true">
-								<select class="entitySelectPlace select2-default form-control ecp-enum emplyinput-12" com="ecp-enum" id="sex" ng-model="sex" data-option="{'noWidth':true,'borderClass':'form-control','ng-model':'sex','scale':0,'mask':'*#','typeId':'com.ygsoft.necp.enumeration.component.types.Gender','classId':'common-enum','dataType':'enum','entityTypeId':'com.ygsoft.necp.enumeration.component.types.Gender','toNumber':true}" isrender="true">
-								<option data-tokens='' value=""></option>
-								<option data-tokens='0' value="0">男</option>
-								<option data-tokens='1' value="1">女</option>
-        </select>
-        </div><div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_9115" isrender="true"><div class="ellipsis emplyinput-8" com="ecp-label" id="birth_label" isrender="true">  生日：
+    </div>
+    <div class="col-12" candrop="ecp-col" id="ecpcol_3672">
+        <div class="container-fluid emplyinput-24" candrop="ecp-col" id="ecprect_9254">
         </div>
-        </div><div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_0893" isrender="true"><input readonly="" class="datepicker ecp-qzzdatepicker form-control emplyinput-13" datatype="date" data-inputer="{'moduleName':'qzz.idatepicker','renderFn':'qzzdatepicker'}" type="text" data-option="{'height':'28','underLine':false,'width':'100%','color':'rgb(51,&amp;nbsp;51,&amp;nbsp;51)','cyctype':'day','showTime':false,'defValue':' ','backgroundColor':'&amp;amp;nbsp;','disabled':false,'readOnly':false,'disInput':true,'ng-model':'birth','scale':0,'mask':'*#','typeId':'','classId':''}" com="ecp-qzzdatepicker" id="birth" ng-model="birth" isrender="true"/>
-        </div><div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_3360" isrender="true"><div class="ellipsis emplyinput-8" com="ecp-label" id="nat_label" isrender="true">  籍贯：
+        <div class="container-fluid emplyinput-24" candrop="ecp-col" id="ecprect_2877">
         </div>
-        </div><div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_5951" isrender="true"><input type="text" class="form-control emplyinput-10" autocomplete="off" com="ecp-text" id="nat" ng-model="nat" isrender="true"/>
-        </div><div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_1934" isrender="true"><div class="ellipsis emplyinput-8" com="ecp-label" id="nation_label" isrender="true">  民族：
-        </div>
-        </div><div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_7475" isrender="true"><input type="text" class="form-control emplyinput-10" autocomplete="off" com="ecp-text" id="nation" ng-model="nation" isrender="true"/>
-        </div><div class="col-2 emplyinput-7" candrop="ecp-col" id="ecpcol_4008" isrender="true"><div class="ellipsis emplyinput-8" com="ecp-label" id="email_label" isrender="true">  邮件：
-        </div>
-        </div><div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_2913" isrender="true"><input type="text" class="form-control emplyinput-10" autocomplete="off" com="ecp-text" id="email" ng-model="email" isrender="true"/>
-        </div><div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_1913" isrender="true"></div><div class="col-2 emplyinput-9" candrop="ecp-col" id="ecpcol_1338" isrender="true"></div></div>
-							<div class="emplyinput-6" candrop="ecp-rect" id="ecprect_1765">
-								<div class="col-12 emplyinput-14" candrop="ecp-col" id="ecpcol_2699">
-        </div>
-							</div>
-      </div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-12" candrop="ecp-col" id="ecpcol_1522">
-			<div class="container-fluid" candrop="ecp-col" id="ecprect_9770">
-				<div id="ecpcol_7025" class="dj_piece_wrapper emplyinput-15" candrop="ecp-col">
-					<div class="pane-wrapper mb-flag-container-canedit" candrop="ecp-col" id="ecpcol_9529">
-						<div class="paneTitle">
-							<span>工作经历</span>
-							<i class="arrow" title="折叠"></i>
-						</div>
-					</div>
-					<div class="piece_content" candrop="ecp-rect" id="ecprect_7899">
-						<div class="col-12" candrop="ecp-col" id="ecpcol_4228">
-							<div class="emplyinput-6" candrop="ecp-rect" id="ecprect_3472">
-								<div class="col-12 emplyinput-16" candrop="ecp-col" id="ecpcol_0419">
-									<div class="tableTopContainer clearfix" com="ecp-table-tool" id="ecptabletool_7569">
-										<div class="btn-group tableTopBtnGroup"><button com="ecp-button" id="addBtn" class="btn" isrender="true"><i class="fa fa-plus"></i><span>新增</span></button><button com="ecp-button" id="delBtn" class="btn" isrender="true"><i class="fa fa-times"></i><span>删除</span></button><button com="ecp-button" id="BUTTON_0502" class="btn" isrender="true"><i class="fa fa-pencil"></i><span>修改</span></button></div>
-									</div>
-								</div>
-								<div class="col-12 emplyinput-17" candrop="ecp-col" id="ecpcol_7994">
-									<table id="mainGrid" class="ecp-qzzgrid emplyinput-18" data-option="{'height':'200px','Align':'alTop','suitToFit':true,'absolute':false,'colNames':[['入职日期','离职日期','工作单位','职务','备注']],'colModels':[{'name':'stime','align':'center','editType':'date','dataName':'stime','caption':'入职日期','lockWidth':false},{'name':'etime','align':'center','editType':'date','dataName':'etime','caption':'离职日期','lockWidth':false},{'name':'company','align':'left','dataName':'company','caption':'工作单位','lockWidth':false},{'name':'composition','align':'left','dataName':'composition','caption':'职务','lockWidth':false},{'name':'rmark','align':'left','dataName':'rmark','caption':'备注','lockWidth':false}],'rownumbers':true,'pager':false,'pageSize':'10','total':false,'subtotal':false,'sort':true,'filter':true,'multiFirst':true,'multiSelect':false,'treeGrid':false,'isExpanded':true,'shrinkToFit':true,'initSort':false,'sumAllLevel':false,'cellEdit':true,'rowHeight':'42','ng-model':'ref_EmplyexperceVO','tempFlagName':'子表表格','dataName':'ref_EmplyexperceVO'}" com="ecp-table" id="ref_EmplyexperceVO" ng-model="ref_EmplyexperceVO" false="子表表格"></table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-12 emplyinput-20" candrop="ecp-col" id="ecpcol_1802">
-			<div class="footerBar navbar-fixed-bottom" candrop="ecp-rect" hasfixed="true" id="ecprect_8732">
-				<div class="emplyinput-21" candrop="ecp-rect" id="ecprect_8984">
-					<div class="col-6 emplyinput-16" candrop="ecp-col" id="ecpcol_9784"></div>
-					<div class="col-6 emplyinput-22" candrop="ecp-col" id="ecpcol_2766">
-						<button class="btn-default btn" com="ecp-button" id="stdExitBtn">关闭</button>
-						<button class="btn-primary btn" com="ecp-button" id="saveBtn">保存</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-12" candrop="ecp-col" id="ecpcol_3672">
-			<div class="container-fluid emplyinput-24" candrop="ecp-col" id="ecprect_9254">
-			</div>
-			<div class="container-fluid emplyinput-24" candrop="ecp-col" id="ecprect_2877">
-			</div>
-		</div>
-	</div>
+    </div>
+</div>
 <span id="textSpan" class="testSpan emplyinput-4"></span>
-	<script src="../../../../../ecp/webcore/scripts/ecp.starter.js?mapp.name=mapp.demo"
-			data-main="../../scripts/emp/emplyInput.controller.js"></script>
+<script src="../../../../../ecp/webcore/scripts/ecp.starter.js?mapp.name=mapp.demo"
+        data-main="../../scripts/emp/emplyInput.controller.js"></script>
 </body>
 </html>

@@ -45,14 +45,14 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 			},
 
 			render: function () {
-				$("#birth").qzzdatepicker({
+			/*	$("#birth").qzzdatepicker({
 					'height' : '34',
 					'underLine' : true,
 					'width' : '100%',
 					'color' : 'rgb(51,&amp;nbsp;51,&amp;nbsp;51)',
 					'cyctype' : 'day',
 					'ng-model' : 'birth'
-				});
+				});*/
 				this.grid = $("#mainGrid").qzzquerygrid({
 					Align: "alClient",
 					Align: "alClient",
@@ -166,7 +166,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				dataModel.sex = $('#sex').comboBox(true).getValue();
 				dataModel.emplyname = $('#emplyname').val();
 				dataModel.age = $('#age').val();
-				dataModel.birth = utils.formatDate($("#birth").datetimepicker("getDate"), "yyyy-MM-dd")
+				//dataModel.birth = utils.formatDate($("#birth").datetimepicker("getDate"), "yyyy-MM-dd")
 				var params = {
 					pageSize: me.pager.size,
 					pageNum: me.pager.page,
