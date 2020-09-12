@@ -20,14 +20,6 @@ import java.util.List;
 @Repository
 public interface IEmplyInfoPODao extends IGeneralGidCompleteDao<EmplyInfoPO, String> {
 
-/*
-    @Query(value = "SELECT * FROM empdetailinfo WHERE if(?1 !='',name=?1,1=1)  " +
-            "and if(?2 !='',age=?2,1=1) and if(?2 !='',birth=?2,1=1) and if(?2 !='',sex=?2,1=1) ",
-            countQuery = "SELECT count(*) dw_nb_fin_t_amso_dm_amso_evaluate_score WHERE if(?1 !='',sap_org_code=?1,1=1)  " +
-                    "  and if(?2 !='',amso_code=?2,1=1) and  fyear=?3 and fmonth= ?4",
-            nativeQuery = true)
-    Page<EmplyexpercePO> findByCondition(String name, String age, String birth, String sex);*/
-
     List<EmplyInfoPO> findByEmplyid(String id);
 
 }

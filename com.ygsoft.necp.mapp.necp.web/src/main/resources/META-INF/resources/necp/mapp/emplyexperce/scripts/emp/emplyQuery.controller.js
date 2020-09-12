@@ -58,6 +58,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 					Align: "alClient",
 					shrinkToFit: true,
 					rownumbers: true,
+					height:'278px',
 					pager: true,
 					colNames: [],
 					colModels: [],
@@ -107,7 +108,8 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				$("#updateBtn").on('click', function() {
 					var emplyInfo={};
 					emplyInfo=me.grid.dataSet.getSelectedData();
-					window.open('emplyInput.html?emplyid='+emplyInfo.emplyid,'_blank');
+					window.open(utils.encodeSearch('emplyInput.html?emplyid='+emplyInfo.emplyid),'_blank');
+
 				});
 				//删除
 				$('#delBtn').click(function(){

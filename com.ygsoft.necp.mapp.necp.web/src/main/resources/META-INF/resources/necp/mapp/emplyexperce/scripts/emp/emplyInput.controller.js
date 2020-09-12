@@ -16,10 +16,10 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 						$('#emplyid').val(content[0].emplyid);
 						$('#emplyname').val(content[0].emplyname);
 						$('#age').val(content[0].age);
-						//$('#sex').selectpicker(content[0].sex);
-						//$('#sex').selectpicker('refresh');
-						$('#birth').val(content[0].birth);
-						$('#nat').val(content[0].nat);
+						$('#sex').comboBox(true).setValue(content[0].sex);
+						var birthDate=utils.jsonStrToDate(content[0].birth);
+						$("#birth").qzzdatepicker(true).setValue(utils.formatDate(birthDate, "yyyy-MM-dd"));
+						$('#borth').val(content[0].borth);
 						$('#nation').val(content[0].nation);
 						$('#email').val(content[0].email);
 						$('#gid').val(content[0].gid);
@@ -83,11 +83,19 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 						{'value':0,'text':'女'}
 					]
 				}
+				$("#birth").datetimepicker({
+					autoclose: true,
+					language: "zh-CN",
+					format: "yyyy-mm",
+					startView: "year",
+					minView: "year",
+					maxView: "decade"
+				});
 				$('#sex').comboBox(option);
 				this.grid.refreshTitle(this.gridopt);
 				this.bindDataSource();
 				this.bindEvent();
-				this.queryData();
+				this.queryExperceData();
 			},
 
 			/**
@@ -111,20 +119,27 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 					emplyInfo.emplyid = $('#emplyid').val();
 					emplyInfo.emplyname = $('#emplyname').val();
 					emplyInfo.age = $('#age').val();
+					emplyInfo.birth = $("#birth").qzzdatepicker(true).getValue();
 					emplyInfo.gid = $('#gid').val();
+					emplyInfo.borth = $('#borth').val();
+					emplyInfo.nation = $('#nation').val();
+					emplyInfo.email = $('#email').val();
 					emplyInfo.emplyexperce=me.grid.getDisplayAsJson();
 					ecp.RemoteService.doPostAsync(
 						"/necp/mapp/emplyexperce/query/emplyInfoPO/saveOrUpdateEmpInfo",
 						emplyInfo, function(resp) {
-							console.log(resp);
+							if (resp.data.flag) {
+								utils.notify({ message: '保存成功。'});
+								$('#gid').val(resp.data.gid);
+							} else {
+								utils.notify({ message: ''+resp.data.msg});
+							}
 						}
 					);
+
 				});
 
 
-				$('#queryBtn').click(function(){
-					me.queryData();
-				});
 				//新增
 				$("#addBtn").on('click', function() {
 					me.grid.append();
@@ -184,10 +199,12 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 			},
 
 
-
-			queryData: function() {
+			queryExperceData: function() {
 				var me = this;
 				var dataModel=utils.getAllArgument();
+				if(dataModel.emplyid==null){
+					return;
+				};
 				var params = {
 					pageSize: me.pager.size,
 					pageNum: me.pager.page,
@@ -196,8 +213,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				ecp.RemoteService.doPostAsync(
 					"/necp/mapp/emplyexperce/query/emplyexpercePO/query",
 					params, function(resp) {
-						//console.log(resp);
-						//console.log(resp.isSuccess());
+						console.log(resp.isSuccess());
 						if (resp.isError() || resp.data == null) {
 							me.grid.value([]);
 							me.grid.setTotalRecord(0, false);
@@ -205,7 +221,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 							utils.notify("查询失败" + resp.data);
 							return;
 						}
-						if (resp.isSuccess() && resp.data) {
+						if (resp.isSuccess() && resp.data.content) {
 							var data = resp.data;
 							me.grid.value(data.content);
 							me.grid.setTotalRecord(data.totalElements, false);
@@ -219,5 +235,6 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 
 		}
 		var c = new Controller();
-	})
 
+
+	})

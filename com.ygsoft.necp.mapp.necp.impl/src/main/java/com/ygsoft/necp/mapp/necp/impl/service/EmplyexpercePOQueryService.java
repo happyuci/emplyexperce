@@ -38,11 +38,8 @@ public class EmplyexpercePOQueryService extends GeneralQueryRestService<Emplyexp
 		final int pageSize = requestMap.getPageSize();
 		final int pageNum =requestMap.getPageNum();
 		Map<String, Object> example =JSON.parseObject(requestMap.getExample(), HashMap.class);
-		Page<EmplyexpercePO> page;
-		if (example.get("emplyid").equals("")) {
-		}
 		Pageable pageRequest=new PageRequest(pageNum, pageSize);
-		page=this.getContext().queryByConditionList(example,pageRequest);
+		Page<EmplyexpercePO> page=this.getContext().queryByConditionList(example,pageRequest);
 		return page;
 	}
 

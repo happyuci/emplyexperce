@@ -55,7 +55,7 @@ public class EmplyInfoPO extends GenObjectEntity {
 	/**
 	 * 籍贯.
 	 */
-	private String nat;
+	private String borth;
 											
 	/**
 	 * 民族.
@@ -171,17 +171,17 @@ public class EmplyInfoPO extends GenObjectEntity {
      * 籍贯的get方法
      * @return nat
      */
-	@Column(name = "NAT", nullable = true, length = 50)
-    public String getNat() {
-        return nat;
+	@Column(name = "BORTH", nullable = true, length = 50)
+    public String getBorth() {
+        return borth;
     }
 		
     /**
      * 设置籍贯.
      * @param nat
      */
-    public void setNat(final String newNat) {
-		this.nat = newNat;
+    public void setBorth(final String borth) {
+		this.borth = borth;
 	}
 	
 	/**

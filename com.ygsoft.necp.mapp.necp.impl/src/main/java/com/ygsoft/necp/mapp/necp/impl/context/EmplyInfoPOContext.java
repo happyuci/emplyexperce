@@ -76,7 +76,7 @@ public class EmplyInfoPOContext extends GeneralContext<EmplyInfoPO, String, IEmp
 	}
 
 	@Override
-	public void saveOrUpdateEmpInfo(EmplyInfoPO emplyInfoPO) {
+	public String saveOrUpdateEmpInfo(EmplyInfoPO emplyInfoPO) {
 		List<EmplyInfoPO> list = getDao().findByEmplyid(emplyInfoPO.getEmplyid());
 		if(!list.isEmpty()){  //已经存在的员工，为更新操作,删除关联工作经历
 			emplyexpercePODao.deleteByEmplyid(emplyInfoPO.getEmplyid());
@@ -90,12 +90,32 @@ public class EmplyInfoPOContext extends GeneralContext<EmplyInfoPO, String, IEmp
 			emplyexpercePO.setEmplyid(emplyInfoPO.getEmplyid());
 			emplyexpercePODao.save(emplyexpercePO);
 		}
+		return emplyInfoPO.getGid();
 	}
 
 	@Override
 	public List<EmplyInfoPO> findById(String id) {
 		List<EmplyInfoPO> list = this.getDao().findByEmplyid(id);
 		return list;
+	}
+
+
+
+	@Override
+	public Boolean checkEmpInfo(EmplyInfoPO emplyInfoPO) {
+		List<EmplyInfoPO> list = this.getDao().findByEmplyid(emplyInfoPO.getEmplyid());
+		if(list.isEmpty()){
+			return true;
+		}else{
+			Boolean flag=true;
+			if(!emplyInfoPO.getGid().equals("")){
+				 flag=list.get(0).getGid().equals(emplyInfoPO.getGid());
+			}else{
+				flag=false;
+			}
+			return flag;
+		}
+
 	}
 
 

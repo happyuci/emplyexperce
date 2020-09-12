@@ -47,12 +47,27 @@ public class EmplyInfoPOQueryService extends GeneralQueryRestService<EmplyInfoPO
 
 
 	@EcpPostMapping({"/saveOrUpdateEmpInfo"})
-	public String saveOrUpdateEmpInfo(@RequestBody EmplyInfoPO emplyInfoPO)  {
-		//首先查询是否是新增还是修改
-		this.getContext().saveOrUpdateEmpInfo(emplyInfoPO);
-		return null;
-	}
+	public Map<String,Object> saveOrUpdateEmpInfo(@RequestBody EmplyInfoPO emplyInfoPO)  {
+		Map<String,Object>map =new HashMap<>();
+		//首先员工id是否重复
+		Boolean flag = this.getContext().checkEmpInfo(emplyInfoPO);
+		if(flag==true){
+			//首先查询是否是新增还是修改
+			try{
+				String gid = this.getContext().saveOrUpdateEmpInfo(emplyInfoPO);
+				map.put("flag",true);
+				map.put("gid",gid);
+			}catch (Exception e){
+				map.put("flag",false);
+				map.put("msg","接口出错");
+			}
+		}else{
+			map.put("flag",false);
+			map.put("msg","员工id不可重复");
+		}
 
+		return map;
+	}
 
 	@EcpPostMapping({"/findByEmpId"})
 	public List<EmplyInfoPO> findById(@RequestBody EmplyInfoPO emplyInfoPO)  {

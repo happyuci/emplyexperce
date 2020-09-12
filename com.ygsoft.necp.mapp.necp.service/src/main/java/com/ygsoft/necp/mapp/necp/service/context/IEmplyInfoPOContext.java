@@ -24,7 +24,7 @@ public interface IEmplyInfoPOContext extends IContext<EmplyInfoPO, String> {
      Page<EmplyInfoPO> queryByConditionList(Map<String,Object> map, Pageable pageable);
 
 
-     void saveOrUpdateEmpInfo(EmplyInfoPO emplyInfoPO);
+     String saveOrUpdateEmpInfo(EmplyInfoPO emplyInfoPO);
 
     List<EmplyInfoPO> findById(String id);
 
@@ -34,4 +34,8 @@ public interface IEmplyInfoPOContext extends IContext<EmplyInfoPO, String> {
      */
     void deleteEmpInfo(EmplyInfoPO emplyInfoPO);
 
+    /**
+     * 判断员工id是否重复
+     */
+    Boolean checkEmpInfo(EmplyInfoPO emplyInfoPO);
 }
