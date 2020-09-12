@@ -52,6 +52,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 					'color' : 'rgb(51,&amp;nbsp;51,&amp;nbsp;51)',
 					'cyctype' : 'day',
 					'ng-model' : 'birth',
+					disInput :true
 				});
 				this.grid = $("#mainGrid").qzzquerygrid({
 					Align: "alClient",
@@ -166,7 +167,15 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 						return '女';
 					}
 				});
+
+				//双击事件
+				this.grid.bind('onDBClick', function() {
+					window.open(utils.encodeSearch('emplyInput.html?emplyid='+this.getValue('emplyid'),'_blank'));
+				});
 			},
+
+
+
 
 			queryData: function() {
 				var me = this;
