@@ -27,7 +27,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 						{name: "emplyname", align: "center", width: "50"},
 						{name: "sex", align: "center", width: "2"},
 						{name: "age", width: "50", align: "center"},
-						{name: "nat", align: "center", scale: 2, width: "2"},
+						{name: "borth", align: "center"},
 						{name: "nation", align: "center",  width: "2"},
 						{name: "birth", align: "center", width: "2",dataType:'date'}
 					]
@@ -45,14 +45,14 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 			},
 
 			render: function () {
-			/*	$("#birth").qzzdatepicker({
+				$("#birth").qzzdatepicker({
 					'height' : '34',
 					'underLine' : true,
 					'width' : '100%',
 					'color' : 'rgb(51,&amp;nbsp;51,&amp;nbsp;51)',
 					'cyctype' : 'day',
-					'ng-model' : 'birth'
-				});*/
+					'ng-model' : 'birth',
+				});
 				this.grid = $("#mainGrid").qzzquerygrid({
 					Align: "alClient",
 					Align: "alClient",
@@ -102,12 +102,14 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				$("#addBtn").on('click', function() {
 					//window.open('emplyInput.html','_blank');
 					$windowUtil.openWindow('emplyInput.html','ECP');
-					//window.location.href="emplyInput.html";
 				});
 				//修改
 				$("#updateBtn").on('click', function() {
-					var emplyInfo={};
-					emplyInfo=me.grid.dataSet.getSelectedData();
+					var emplyInfo=me.grid.dataSet.getSelectedData();
+					if(emplyInfo==null){
+						utils.notify("请选择员工后进行修改");
+						return;
+					}
 					window.open(utils.encodeSearch('emplyInput.html?emplyid='+emplyInfo.emplyid),'_blank');
 
 				});
@@ -115,6 +117,10 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				$('#delBtn').click(function(){
 					var emplyInfo={};
 					emplyInfo=me.grid.dataSet.getSelectedData();
+					if(emplyInfo==null){
+						utils.notify("请选择员工后进行修改");
+						return;
+					}
 					 $dialog.show({
 						title:'提示',
 						content:'是否删除当前数据？',
@@ -168,7 +174,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				dataModel.sex = $('#sex').comboBox(true).getValue();
 				dataModel.emplyname = $('#emplyname').val();
 				dataModel.age = $('#age').val();
-				//dataModel.birth = utils.formatDate($("#birth").datetimepicker("getDate"), "yyyy-MM-dd")
+				dataModel.birth =$("#birth").qzzdatepicker(true).getValue();
 				var params = {
 					pageSize: me.pager.size,
 					pageNum: me.pager.page,

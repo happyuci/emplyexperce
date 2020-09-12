@@ -25,16 +25,15 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * EmplyInfoPO场景类.<br>
  *
  * @author zhangying14@ygsoft.com <br>
- * @version 1.0.0 2020-09-06 19:32:17<br>
+ * @version 1.0.0 2020-09-12 12:32:17<br>
  * @since JDK 1.8.0_152
  */
 @Service
@@ -131,12 +130,16 @@ public class EmplyInfoPOContext extends GeneralContext<EmplyInfoPO, String, IEmp
 
 	private Specification<EmplyInfoPO> getSupplierPaySummarySpection(Map<String, Object> example) {
 		return (Specification<EmplyInfoPO>) (root, query, cb) -> {
-			return cb.and(generateSpecWhere(example, root, cb));
+			try {
+				return cb.and(generateSpecWhere(example, root, cb));
+			} catch (ParseException e) {
+				return null;
+			}
 		};
 	}
 
 
-	private Predicate[] generateSpecWhere(Map<String, Object> example, Root<EmplyInfoPO> root, CriteriaBuilder cb) {
+	private Predicate[] generateSpecWhere(Map<String, Object> example, Root<EmplyInfoPO> root, CriteriaBuilder cb) throws ParseException {
 		List<Predicate> list = new ArrayList<>();
 		final Map<String, String> attributeMap = new HashMap<>();
 		root.getModel().getAttributes().forEach(e -> attributeMap.put(e.getName(), ""));
@@ -151,6 +154,10 @@ public class EmplyInfoPOContext extends GeneralContext<EmplyInfoPO, String, IEmp
 				list.add(cb.equal(root.get("sex"), value));
 			} else if (StringUtils.equals("emplyid", name) && !"".equals(value)) {
 				list.add(cb.equal(root.get("sex"), value));
+			} else if (StringUtils.equals("birth", name) && !"".equals(value)) {
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");//注意月份是MM
+				Date date = simpleDateFormat.parse(value.toString());
+				list.add(cb.equal(root.get("birth"),date));
 			} else {
 				if (attributeMap.containsKey(name)) {
 					//list.add(cb.like(root.get(name), "%" + value.toString().trim() + "%"));
