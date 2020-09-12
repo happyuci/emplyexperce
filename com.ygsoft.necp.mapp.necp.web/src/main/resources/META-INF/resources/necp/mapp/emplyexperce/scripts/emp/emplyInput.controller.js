@@ -14,6 +14,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 						var data=resp.data;
 						var content = data;
 						$('#emplyid').val(content[0].emplyid);
+						$('#emplyid').attr("readonly","readonly")
 						$('#emplyname').val(content[0].emplyname);
 						$('#age').val(content[0].age);
 						$('#sex').comboBox(true).setValue(content[0].sex);
@@ -63,7 +64,8 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 					'width' : '100%',
 					'color' : 'rgb(51,&amp;nbsp;51,&amp;nbsp;51)',
 					'cyctype' : 'day',
-					'ng-model' : 'birth'
+					'ng-model' : 'birth',
+					"disInput":true
 				});
 				this.grid = $("#mainGrid").qzzgrid({
 					Align: "alClient",
@@ -113,6 +115,11 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 				});
 
 				$('#saveBtn').click(function(){
+					var reg=/^\w+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
+					if(!reg.test($('#email').val())){
+
+					}
+
 					//获取员工信息和工作经历
 					var emplyInfo={};
 					emplyInfo.sex = $('#sex').comboBox(true).getValue()==null?'':$('#sex').comboBox(true).getValue();
@@ -125,6 +132,38 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 					emplyInfo.nation = $('#nation').val();
 					emplyInfo.email = $('#email').val();
 					emplyInfo.emplyexperce=me.grid.getDisplayAsJson();
+					var reg=/^\S/;
+					if(!reg.test(emplyInfo.emplyid)){
+						utils.notify("请输入员工编号");
+						$('#emplyid').focus();
+						return;
+					}
+					reg=/^([\u4e00-\u9fa5a-zA-Z]){1,10}$/;
+					if(!reg.test(emplyInfo.emplyname)){
+						utils.notify("请输入真实有效的姓名");
+						$('#emplyname').focus();
+						return;
+					}
+					reg=/^(?:[1-9][0-9]?|1[01][0-9]|120)$/;
+					if(!reg.test(emplyInfo.age)){
+						utils.notify("请输入真实年龄");
+						$('#age').focus();
+						return;
+					}
+					reg=/0|1/;
+					if(!reg.test(emplyInfo.sex)){
+						utils.notify("请选择性别");
+						$('#sex').focus();
+						return;
+					}
+					reg=/^\S/;
+					if(!reg.test(emplyInfo.birth)){
+						utils.notify("请选择生日");
+						$('#birth').focus();
+						return;
+					}
+
+
 					ecp.RemoteService.doPostAsync(
 						"/necp/mapp/emplyexperce/query/emplyInfoPO/saveOrUpdateEmpInfo",
 						emplyInfo, function(resp) {
@@ -174,7 +213,12 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 
 			// 绑定事件
 			bindEvent : function() {
-
+				$('#emplyid').validateBox({
+					rules : {
+						expression : /^\S/,
+						formatsl : '请输入员工编号！'
+					}
+				});
 				// 姓名输入效验
 				$('#emplyname').validateBox({
 					rules : {
@@ -190,7 +234,7 @@ require([ 'jquery', 'ecp.service', "necp.genentity.controller", "ecp.utils.rende
 					}
 				});
 				//邮箱
-				$('#email').validateBox({
+				var flag=$('#email').validateBox({
 					rules: {
 						expression: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
 						formatsl: '请输入正确邮箱格式。'
